@@ -61,9 +61,13 @@ const inputStyles = StyleSheet.create({
 const DeliverySubscribeFormPayment = ({ navigation }) => {
   const [{ subscribeFormData, subscription, subscriptionActive }, dispatch] = useStateValue();
 
-  const [cardNumber, setCardNumber] = useState(subscribeFormData.cardNumber);
-  const [cardHolderName, setCardHolderName] = useState(subscribeFormData.cardHolderName);
-  const [cardExpirationDate, setCardExpirationDate] = useState(subscribeFormData.cardExpirationDate);
+  // const [cardNumber, setCardNumber] = useState(subscribeFormData.cardNumber);
+  // const [cardHolderName, setCardHolderName] = useState(subscribeFormData.cardHolderName);
+  // const [cardExpirationDate, setCardExpirationDate] = useState(subscribeFormData.cardExpirationDate);
+
+  const [cardNumber, setCardNumber] = useState("4111 1111 1111 1111");
+  const [cardHolderName, setCardHolderName] = useState("Hannah Fisher");
+  const [cardExpirationDate, setCardExpirationDate] = useState("02/24");
 
   const cancelPayment = () => {
     if (subscription) {

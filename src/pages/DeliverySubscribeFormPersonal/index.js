@@ -71,12 +71,19 @@ const inputStyles = StyleSheet.create({
 const DeliverySubscribeFormPersonal = ({ navigation }) => {
   const [{ subscribeFormData, subscription, subscriptionActive }, dispatch] = useStateValue();
 
-  const [name, setName] = useState(subscribeFormData.name);
-  const [birthDate, setBirthDate] = useState(subscribeFormData.birthDate);
-  const [email, setEmail] = useState(subscribeFormData.email);
-  const [street, setStreet] = useState(subscribeFormData.street);
-  const [postalCode, setPostalCode] = useState(subscribeFormData.postalCode);
-  const [city, setCity] = useState(subscribeFormData.city);
+  // const [name, setName] = useState(subscribeFormData.name);
+  // const [birthDate, setBirthDate] = useState(subscribeFormData.birthDate);
+  // const [email, setEmail] = useState(subscribeFormData.email);
+  // const [street, setStreet] = useState(subscribeFormData.street);
+  // const [postalCode, setPostalCode] = useState(subscribeFormData.postalCode);
+  // const [city, setCity] = useState(subscribeFormData.city);
+
+  const [name, setName] = useState("Hannah Fisher");
+  const [birthDate, setBirthDate] = useState("27/01/1993");
+  const [email, setEmail] = useState("hannahfisher@gmail.com");
+  const [street, setStreet] = useState("Dircksenstraße 41");
+  const [postalCode, setPostalCode] = useState("10178");
+  const [city, setCity] = useState("Berlin")
 
   const onBackPress = () => {
     if (subscription) {
