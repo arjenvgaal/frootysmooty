@@ -49,16 +49,17 @@ const IngredientRow = ({ title, count, onLeadingPress, onTrailingPress, navigati
             <TouchableOpacity onPress={onTrailingPress} style={[{ paddingLeft: 12 }]}>
               <Icons name="keyboard-arrow-up" size={24} color="#F06129" />
             </TouchableOpacity>
-            <Text style={[ingredientRowStyles.titleLabel, { paddingLeft: 12 }]}>{title}</Text>
+            <View style={{ paddingLeft: 12 }}>
+              <Text style={ingredientRowStyles.titleLabel}>{title}</Text>
+              <View>
+                <Text style={{color: "gray"}}>In since Sep 8, 2019</Text>
+              </View>
+            </View>
           </View>
 
           <View>
             <Text style={[ingredientRowStyles.countLabel, { paddingRight: 40 }]}>{count}</Text>
           </View>
-        </View>
-
-        <View style={{paddingLeft: 84}}>
-          <Text style={{color: "gray"}}>In since Sep 8, 2019</Text>
         </View>
       </View>
   );
