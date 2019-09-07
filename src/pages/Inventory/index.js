@@ -5,7 +5,7 @@ import StyledButton from '../../components/StyledButton';
 import IngredientRow from '../../components/IngredientRow';
 import screen from'../../assets/screen.inventory.png';
 import { withNavigation } from 'react-navigation';
-import {View, FlatList, StyleSheet} from "react-native";
+import {Text, View, FlatList, StyleSheet} from "react-native";
 import {useStateValue} from "../../utils/state";
 
 const primaryButtonStyles = StyleSheet.create({
@@ -71,26 +71,46 @@ const Inventory = ({ navigation }) => {
     });
   };
 
-  return (
-    <PageBackground source={screen}>
+  if (ingredientInventory.length > 0) {
+    return (
+      <PageBackground source={screen}>
+        <StyledButton
+          style={[primaryButtonStyles.position, primaryButtonStyles.size]}
+          onPress={() => navigation.navigate('InventoryAddIngredientsPicture')}
+        />
+  
+  
+        <View style={[whitePanelStyles.position, whitePanelStyles.size, whitePanelStyles.style]}>
+          <FlatList
+            keyExtractor={(item) => item.key}
+            data={ingredientInventory}
+            renderItem={({item}) => renderItem(item)}
+          />
+        </View>
+  
+  
+        <Tabbar />
+      </PageBackground>
+    )
+  } else {
+    return (
+      <PageBackground source={screen}>
       <StyledButton
         style={[primaryButtonStyles.position, primaryButtonStyles.size]}
         onPress={() => navigation.navigate('InventoryAddIngredientsPicture')}
       />
-
-
+  
+  
       <View style={[whitePanelStyles.position, whitePanelStyles.size, whitePanelStyles.style]}>
-        <FlatList
-          keyExtractor={(item) => item.key}
-          data={ingredientInventory}
-          renderItem={({item}) => renderItem(item)}
-        />
+        <Text style={{textAlign:"center", fontFamily: "Stilu-Regular", fontSize: 14, color: 'gray',}}>You currently do not have any ingredients added.</Text>
       </View>
-
-
+  
+  
       <Tabbar />
     </PageBackground>
-  )
+    );
+  }
+
 };
 
 export default withNavigation(Inventory);

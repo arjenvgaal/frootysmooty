@@ -8,13 +8,13 @@ import {StyleSheet} from "react-native";
 const primaryButtonStyles = StyleSheet.create({
   position: {
     position: 'absolute',
-    bottom: 125,
-    left: 165,
+    bottom: 80,
+    left: 160,
   },
   size: {
     width: 50,
     height: 50,
-    //backgroundColor: 'rgba(52, 52, 52, 0.8)',
+    backgroundColor: 'rgba(52, 52, 52, 0.8)',
   }
 });
 
