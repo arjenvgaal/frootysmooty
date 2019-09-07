@@ -40,16 +40,16 @@ const IngredientRow = ({ title, count, onLeadingPress, onTrailingPress, navigati
   const leadingButtonIcon = count > 1 ? 'keyboard-arrow-down' : 'close';
 
   return (
-    <View style={{ borderBottomWidth: 1, borderColor: '#E1E1E1', paddingVertical: 12}}>
+    <View style={{ borderBottomWidth: 1, borderColor: '#E1E1E1', paddingVertical: 12, paddingHorizontal: 0}}>
         <View style={[ingredientRowStyles.size, ingredientRowStyles.style, ingredientRowStyles.horizontalRow]}>
-          <View style={[ingredientRowStyles.horizontalRow, { flex: 1, paddingLeft: 20 }]}>
+          <View style={[ingredientRowStyles.horizontalRow, { flex: 1 }]}>
             <TouchableOpacity onPress={onLeadingPress}>
-              <Icons name={leadingButtonIcon} size={24} color="#F06129" style={{ backgroundColor: "red", marginLeft: -15 }} />
+              <Icons name={leadingButtonIcon} size={24} color="#F06129" />
             </TouchableOpacity>
-            <TouchableOpacity onPress={onTrailingPress} style={[{ paddingLeft: 10 }]}>
+            <TouchableOpacity onPress={onTrailingPress} style={[{ paddingLeft: 12 }]}>
               <Icons name="keyboard-arrow-up" size={24} color="#F06129" />
             </TouchableOpacity>
-            <Text style={[ingredientRowStyles.titleLabel, { paddingLeft: 20 }]}>{title}</Text>
+            <Text style={[ingredientRowStyles.titleLabel, { paddingLeft: 12 }]}>{title}</Text>
           </View>
 
           <View>
