@@ -18,7 +18,20 @@ const primaryButtonStyles = StyleSheet.create({
   size: {
     width: 275,
     height: 50,
-    //backgroundColor: 'rgba(52, 52, 52, 0.8)',
+    // backgroundColor: 'blue',
+  }
+});
+
+const mockButtonStyles = StyleSheet.create({
+  position: {
+    position: 'absolute',
+    bottom: 10,
+    left: 50,
+  },
+  size: {
+    width: 275,
+    height: 50,
+    // backgroundColor: 'red',
   }
 });
 
@@ -45,7 +58,7 @@ const cameraStyles = StyleSheet.create({
 const InventoryAddIngredientsPicture = ({ navigation }) => {
   const camera = useRef(null);
 
-  const takePicture = async () => {
+  const takePicture = async (mock) => {
     // const responseJSON = await submitToGoogle(twoApples);
     // const parsedIngredients = parseObjects(responseJSON);
     //
@@ -53,17 +66,41 @@ const InventoryAddIngredientsPicture = ({ navigation }) => {
     //   parsedIngredients
     // });
 
-    if (camera) {
+    if (camera && mock !== true) {
       const options = { quality: 0.5, base64: true };
       const data = await camera.current.takePictureAsync(options);
 
       const responseJSON = await submitToGoogle(data.base64);
       const parsedIngredients = parseObjects(responseJSON);
+      console.log('PARSED', parsedIngredients);
+
 
       navigation.navigate('InventoryAddIngredientsSubmit', {
         parsedIngredients
       });
 
+    } else {
+      const options = { quality: 0.5, base64: true };
+      const data = await camera.current.takePictureAsync(options);
+
+      const parsedIngredients = [
+        {name:"Pineapple"},
+        {name:"Cucumber"},
+        {name:"Red bell pepper"},
+        {name:"Yellow bell pepper"},
+        {name:"Banana"},
+        {name:"Mango"},
+        {name:"Aubergine"},
+        {name:"Carrot"},
+        {name:"Apple"},
+        {name:"Pear"}
+      ];
+
+      console.log('PARSED', parsedIngredients);
+
+      navigation.navigate('InventoryAddIngredientsSubmit', {
+        parsedIngredients
+      });
     }
   };
 
@@ -93,6 +130,11 @@ const InventoryAddIngredientsPicture = ({ navigation }) => {
       <StyledButton
         style={[primaryButtonStyles.position, primaryButtonStyles.size]}
         onPress={() => takePicture()}
+      />
+
+      <StyledButton
+        style={[mockButtonStyles.position, mockButtonStyles.size]}
+        onPress={() => takePicture(true)}
       />
     </PageBackground>
   );
